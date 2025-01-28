@@ -1,0 +1,51 @@
+{
+    "manifest_version": 3,
+    "name": "PKB-mediclog-webext",
+    "version": "0.0.2",
+    "description": "Aids entering mediclog data into PatientsKnowBest.",
+    "icons": {
+  "48": "icons/mediclog-48.png",
+  "96": "icons/mediclog-96.png"
+},
+
+    "host_permissions": [
+        "https://my.patientsknowbest.com/*"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://my.patientsknowbest.com/*"
+            ],
+            "js": [
+                "js/borderify.js"
+            ]
+        },
+        {
+            "matches": [
+                "https://my.patientsknowbest.com/auth/dashboard.action"
+            ],
+            "js": [
+                "js/borderifyg.js"
+            ]
+        }
+    ],
+    "options_ui": {
+        "page": "settings/options.html",
+        "browser_style": false
+    },
+    "action": {
+  "default_icon": "icons/mediclog.svg",
+  "default_title": "PKB Helper",
+  "default_area": "navbar",
+  "default_popup": "popup/popup.html"
+},
+    "permissions": [
+        "storage",
+        "scripting"
+    ],
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "pkb-mediclog-helper@paladyn.org"
+        }
+    }
+}
